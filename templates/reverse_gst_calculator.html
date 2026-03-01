@@ -1,0 +1,31 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h1>Reverse GST Calculator</h1>
+  <p class="sub">Find taxable value and GST amount from a GST-inclusive price.</p>
+
+  <div class="form-grid">
+    <label for="grossAmount">GST Inclusive Amount</label>
+    <input id="grossAmount" type="number" min="0" step="0.01" placeholder="Enter total amount">
+
+    <label for="reverseRate">GST Rate</label>
+    <select id="reverseRate">
+      <option value="5">5%</option>
+      <option value="12">12%</option>
+      <option value="18" selected>18%</option>
+      <option value="28">28%</option>
+    </select>
+  </div>
+
+  <hr>
+
+  <div class="result-grid">
+    <div><span>Taxable Amount</span><strong id="taxable">INR 0.00</strong></div>
+    <div><span>Total GST</span><strong id="totalGst">INR 0.00</strong></div>
+    <div><span>Net Amount</span><strong class="highlight" id="netAmount">INR 0.00</strong></div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/reverse_gst.js') }}"></script>
+{% endblock %}

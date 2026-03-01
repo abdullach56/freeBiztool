@@ -1,0 +1,58 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h1>Invoice Generator</h1>
+  <p class="sub">Create a clean GST invoice and download it as PDF.</p>
+
+  <form id="invoiceForm" class="invoice-form" autocomplete="off">
+    <h2>Seller Details</h2>
+    <div class="form-grid two-col">
+      <input id="sellerBusinessName" type="text" placeholder="Business Name" required>
+      <input id="sellerPhone" type="text" placeholder="Phone" required>
+      <input id="sellerGst" type="text" placeholder="GST Number" required>
+      <input id="sellerAddress" type="text" placeholder="Address" required>
+    </div>
+
+    <h2>Customer Details</h2>
+    <div class="form-grid two-col">
+      <input id="customerName" type="text" placeholder="Customer Name" required>
+      <input id="customerGst" type="text" placeholder="Customer GST (optional)">
+      <input id="customerAddress" type="text" placeholder="Address" class="span-2" required>
+    </div>
+
+    <h2>Items</h2>
+    <div class="table-wrap">
+      <table id="itemsTable">
+        <thead>
+          <tr>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>GST %</th>
+            <th>Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="itemsBody"></tbody>
+      </table>
+    </div>
+
+    <button type="button" class="btn btn-secondary" id="addItemBtn">Add Item</button>
+
+    <div class="totals-box">
+      <p>Subtotal <strong id="subtotal">INR 0.00</strong></p>
+      <p>Total GST <strong id="invoiceGst">INR 0.00</strong></p>
+      <p>Grand Total <strong class="highlight" id="grandTotal">INR 0.00</strong></p>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn" id="downloadPdfBtn">Download Invoice as PDF</button>
+    </div>
+  </form>
+
+  <div class="ad-slot ad-after-preview" aria-label="Advertisement">Ad Space - After Invoice Preview</div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/invoice.js') }}"></script>
+{% endblock %}

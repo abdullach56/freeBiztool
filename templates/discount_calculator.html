@@ -1,0 +1,25 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h1>Discount Calculator</h1>
+  <p class="sub">Calculate savings and final payable amount.</p>
+
+  <div class="form-grid">
+    <label for="originalPrice">Original Price</label>
+    <input id="originalPrice" type="number" min="0" step="0.01" placeholder="Enter price">
+
+    <label for="discountPercent">Discount %</label>
+    <input id="discountPercent" type="number" min="0" max="100" step="0.01" placeholder="Enter discount percentage">
+  </div>
+
+  <hr>
+
+  <div class="result-grid">
+    <div><span>Discount Amount</span><strong id="discountAmount">INR 0.00</strong></div>
+    <div><span>Final Price</span><strong class="highlight" id="finalPrice">INR 0.00</strong></div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/discount.js') }}"></script>
+{% endblock %}
