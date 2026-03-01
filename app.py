@@ -16,7 +16,9 @@ from reportlab.platypus import SimpleDocTemplate, Spacer, Table, TableStyle
 app = Flask(__name__)
 
 # global configuration values
-ADSENSE_CLIENT = "ca-pub-XXXXXXXXXXXXXXXX"  # placeholder
+# your AdSense publisher ID; used in templates to initialise the script tag
+ADSENSE_CLIENT = "ca-pub-4803874079186263"
+
 
 @app.context_processor
 def inject_globals() -> Dict[str, Any]:
